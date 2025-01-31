@@ -1,19 +1,3 @@
-# from roboflow import Roboflow
-# from time import sleep
-# import json
-# import numpy as np
-# import requests
-# import cv2
-
-# rf = Roboflow(api_key="qLojUGTXF602vpyJrGT3")
-# project = rf.workspace().project("coin-iajma")
-# model = project.version("1").model
-
-# # Predict using the image
-# prediction = model.predict("capture.jpg").json()
-# print("Prediction:", prediction)
-
-
 
 import RPi.GPIO as GPIO
 import time
@@ -60,23 +44,3 @@ def set_angle(angle):
     duty_cycle = 2 + (angle / 18)  # Map angle to duty cycle
     pwm.ChangeDutyCycle(duty_cycle)
     time.sleep(0.015)  # Allow the servo to reach the position
-
-
-
-# if __name__ == "__main__":
-#     try:
-#         while True:
-#             time.sleep(3)
-
-#             right_sweep()
-
-#             # Short delay before moving to the left
-#             time.sleep(3)
-
-#             left_sweep()
-
-#     except KeyboardInterrupt:
-#         print("Program stopped by user.")
-#     finally:
-#         pwm.stop()  # Stop the PWM signal
-#         GPIO.cleanup()  # Clean up GPIO settings
