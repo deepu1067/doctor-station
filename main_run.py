@@ -5,7 +5,7 @@ import time
 import serial
 from roboflow import Roboflow
 
-ROBOFLOW_API = "qLojUGTXF602vpyJrGT3"
+ROBOFLOW_API = "API KEY"
 YELLOW_START = 26
 PROCEED_BLACK = 19
 MIC_BROWN = 13
