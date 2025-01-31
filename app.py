@@ -5,7 +5,6 @@ from mlx90614 import MLX90614
 from flask_cors import CORS
 import time
 import requests
-from roboflow import Roboflow
 import time
 from AudioPlayer import AudioRecorder
 import speech_recognition as sr
@@ -15,11 +14,7 @@ import serial
 app = Flask(__name__)
 CORS(app)
 CORS(app, resources={r"/pieapi/*": {"origins": "*"}})
-ROBOFLOW_API = "qLojUGTXF602vpyJrGT3"
 recorder = AudioRecorder()
-#arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
-
-
 
 """
     GPIO2 (SDA), GPIO3 (SCL)
@@ -135,66 +130,6 @@ def rejectcoin():
 
     return jsonify({"success":True, "message":"Coin returned"})
 
-@app.route('/pieapi/check', methods=['GET'])
-def check_coin():
-    # ESP32-CAM URL
-    esp32_url = "http://10.15.9.71/capture"
-    
-    try:
-        # Fetch the image from ESP32-CAM
-        response = requests.get(esp32_url)
-        if response.status_code == 200:
-            # Save the image locally
-            with open("capture.jpg", "wb") as f:
-                f.write(response.content)
-            print("Image saved as capture.jpg")
-        
-            # Initialize Roboflow
-            rf = Roboflow(api_key=ROBOFLOW_API)
-            project = rf.workspace().project("coin-iajma")
-            model = project.version("1").model
-        
-            # Predict using the image
-            prediction = model.predict("capture.jpg").json()
-            print("Prediction:", prediction)
-        
-            # Access the top prediction class
-            top_prediction = prediction['predictions'][0]['top']
-            print("Top Prediction Class:", top_prediction)
-            
-            # Return success response with prediction data
-            try:
-                if top_prediction == "five":
-                    print("Performing left sweep (store coin).")
-                    # left_sweep()
-                else:
-                    print("Performing right sweep (return coin).")
-                    # right_sweep()
-            except Exception as servo_error:
-                print(f"Error controlling servo: {servo_error}")
-                return jsonify({
-                    "status": "error",
-                    "message": "Servo operation failed.",
-                    "details": str(servo_error)
-                }), 500
- 
-
-            return jsonify({
-                "status": "success",
-                "top_prediction": top_prediction,
-                "details": prediction
-            }), 200
-        else:
-            return jsonify({
-                "status": "error",
-                "message": "Failed to fetch image from ESP32-CAM."
-            }), 500
-    except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
-
 
 @app.route('/pieapi/start', methods=['GET'])
 def start_recording():
@@ -225,5 +160,3 @@ if __name__ == "__main__":
         app.run(host="0.0.0.0", port=8000, debug=True)
     finally:
         pass
-        # servo.detach()  # Ensure servo is detached when the server stops
-        # print("Servo detached.")
