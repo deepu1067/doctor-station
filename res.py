@@ -1,6 +1,6 @@
 from groq import Groq
 import json
-GROQ_API = "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"
+GROQ_API = "API_KEY"
 import json
 
 def res(heart_rate, temperature, prblm):
