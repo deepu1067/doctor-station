@@ -1,0 +1,14 @@
+{
+    "Analysis": "Your heart rate is slightly elevated, and body temperature is within normal limits. The combination of mild headache, itching skin, and elevated heart rate may indicate an allergic reaction or a viral infection.",
+    "Recommendation": "Stay hydrated, take rest, and try to avoid scratching the itchy areas. Consider consulting a doctor for further evaluation and diagnosis.",
+    "Medicines": [
+        {
+            "name": "Loratadine",
+            "Dosage": "10mg once daily"
+        },
+        {
+            "name": "Paracetamol",
+            "Dosage": "500mg every 6 hours"
+        }
+    ]
+}

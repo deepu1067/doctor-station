@@ -1,0 +1,32 @@
+{
+    "predictions": [
+        {
+            "inference_id": "284a1a54-23a3-42da-9f43-e582aad8a217",
+            "time": 0.2905357469999217,
+            "image": {
+                "width": 480,
+                "height": 320
+            },
+            "predictions": [
+                {
+                    "class": "reject",
+                    "class_id": 0,
+                    "confidence": 0.9806
+                },
+                {
+                    "class": "accept",
+                    "class_id": 1,
+                    "confidence": 0.0194
+                }
+            ],
+            "top": "reject",
+            "confidence": 0.9806,
+            "image_path": "two.jpg",
+            "prediction_type": "ClassificationModel"
+        }
+    ],
+    "image": [
+        480,
+        320
+    ]
+}

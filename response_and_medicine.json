@@ -1,0 +1,4 @@
+{
+    "response": "{\n    \"Analysis\": \"The provided vitals indicate a slightly elevated heart rate and a body temperature that is slightly below the normal range. Considering the symptoms of mild headache and unbearable itching, it may be indicative of an allergic reaction or a viral infection.\",\n    \"Recommendation\": \"Stay hydrated, take rest, and apply a cold compress to relieve the headache. For itching, apply calamine lotion or take an oatmeal bath.\",\n    \"Medicine\": \"Take cetirizine (10mg) once daily for allergic reactions, or paracetamol (500mg) every 6 hours for headache and fever, if necessary. Consult a doctor for proper diagnosis and prescription.\"\n}",
+    "medicine": "{\n    \"Medicines\": [\n        {\n            \"Name\": \"Cetirizine\",\n            \"Dosage\": \"10mg once daily\"\n        },\n        {\n            \"Name\": \"Paracetamol\",\n            \"Dosage\": \"500mg every 6 hours\"\n        }\n    ]\n}"
+}
